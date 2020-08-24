@@ -1,6 +1,7 @@
 import React, { Component, createRef } from "react";
 import { db } from "../firebase";
 import { firestore } from "firebase";
+import { BrowserView, MobileView } from "react-device-detect";
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -377,87 +378,95 @@ class Record extends Component {
   render() {
     return (
       <div>
-        <div className={styles.left}>
-          <h1>Record</h1>
-          <h4>{this.state.loadingMsg}</h4>
-          <h2>Name: {this.state.name}</h2>
-          <h2>Session ID: {this.state.id}</h2>
-          <h2>
-            Course: {this.state.course} {this.state.term} {this.state.year}
-          </h2>
-          <br />
-          <form
-            hidden={this.state.formHidden}
-            noValidate
-            autoComplete="off"
-            onSubmit={this.handleOnSubmit}
-          >
-            <div>
-              <TextField
-                required
-                inputRef={this.nameRef}
-                id="Name"
-                label="Name"
-                defaultValue=""
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </div>
+        <BrowserView>
+          <div className={styles.left}>
+            <h1>Record</h1>
+            <h4>{this.state.loadingMsg}</h4>
+            <h2>Name: {this.state.name}</h2>
+            <h2>Session ID: {this.state.id}</h2>
+            <h2>
+              Course: {this.state.course} {this.state.term} {this.state.year}
+            </h2>
             <br />
-            <div>
-              <TextField
-                required
-                inputRef={this.idRef}
-                id="Session ID"
-                label="Session ID"
-                defaultValue=""
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <ComputerIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </div>
-            <Button type="submit" variant="contained" color="primary">
-              Save
+            <form
+              hidden={this.state.formHidden}
+              noValidate
+              autoComplete="off"
+              onSubmit={this.handleOnSubmit}
+            >
+              <div>
+                <TextField
+                  required
+                  inputRef={this.nameRef}
+                  id="Name"
+                  label="Name"
+                  defaultValue=""
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AccountCircle />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <br />
+              <div>
+                <TextField
+                  required
+                  inputRef={this.idRef}
+                  id="Session ID"
+                  label="Session ID"
+                  defaultValue=""
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <ComputerIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <Button type="submit" variant="contained" color="primary">
+                Save
+              </Button>
+            </form>
+          </div>
+          <br />
+          <div className={styles.right}>
+            <video
+              style={this.styles}
+              autoPlay
+              muted
+              ref={this.videoRef}
+              width="720"
+              height="600"
+            />
+            <br />
+            <canvas
+              style={this.styles}
+              ref={this.canvasRef}
+              width="720"
+              height="650"
+            />
+            <br />
+            <Button
+              ref={this.recordRef}
+              variant="contained"
+              color="primary"
+              disabled={this.state.recordButton}
+            >
+              Record
             </Button>
-          </form>
-        </div>
-        <br />
-        <div className={styles.right}>
-          <video
-            style={this.styles}
-            autoPlay
-            muted
-            ref={this.videoRef}
-            width="720"
-            height="600"
-          />
-          <br />
-          <canvas
-            style={this.styles}
-            ref={this.canvasRef}
-            width="720"
-            height="650"
-          />
-          <br />
-          <Button
-            ref={this.recordRef}
-            variant="contained"
-            color="primary"
-            disabled={this.state.recordButton}
-          >
-            Record
-          </Button>
-          <ul ref={this.listRef} id="list"></ul>
-        </div>
+            <ul ref={this.listRef} id="list"></ul>
+          </div>
+        </BrowserView>
+        <MobileView>
+          <h1>
+            Recording not supported on mobile at this time. Please use a desktop
+            browser.
+          </h1>
+        </MobileView>
       </div>
     );
   }
