@@ -1,0 +1,13 @@
+.form {
+  width: 100%;
+  padding-left: 30px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.combo {
+  margin-right: 10px;
+  margin-left: 10px;
+}
