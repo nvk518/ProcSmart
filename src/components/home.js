@@ -37,9 +37,21 @@ class Home extends Component {
         <br />
         <h2>Educators</h2>
         <p>
-          1. Go to <a href="/create">Create</a>
+          1. Go to <a href="/create">Create</a>. <br />
           2. Enter class information and objects you want ProcSmart to detect
-          and flag.
+          and flag. <br />
+          3. Generate Session ID and share with students. <br />
+        </p>
+        <br />
+        <h2>Students</h2>
+        <p>
+          1. Go to <a href="/record">Record</a> <br />
+          2. Enter your name and class Session ID provided by your educator{" "}
+          <br />
+          3. Save and record webcam <br />
+          4. Stop when examination is complete. The recording and ProcSmart
+          analysis will be downloaded. <br />
+          5. Share downloaded files with educator. <br />
         </p>
         <br />
         <div className={styles.start}>
