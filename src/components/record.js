@@ -21,11 +21,9 @@ class Record extends Component {
     this.listRef = createRef();
     this.nameRef = createRef();
     this.idRef = createRef();
-    // we are gonna use inline style
+
     this.styles = {
       position: "fixed",
-      //   top: 150,
-      //   left: 150,
     };
 
     this.state = {
@@ -123,20 +121,19 @@ class Record extends Component {
       const y = prediction.bbox[1];
       const width = prediction.bbox[2];
       const height = prediction.bbox[3];
-      // Draw the bounding box.
+
       ctx.strokeStyle = "#2fff00";
       ctx.lineWidth = 1;
       ctx.strokeRect(x, y, width, height);
-      // Draw the label background.
+
       ctx.fillStyle = "#2fff00";
       const textWidth = ctx.measureText(prediction.class).width;
       const textHeight = parseInt(font, 10);
-      // draw top left rectangle
+
       ctx.fillRect(x, y, textWidth + 10, textHeight + 10);
-      // draw bottom left rectangle
+
       ctx.fillRect(x, y + height - textHeight, textWidth + 15, textHeight + 10);
 
-      // Draw the text last to ensure it's on top.
       ctx.fillStyle = "#000000";
       ctx.fillText(prediction.class, x, y);
       ctx.fillText(prediction.score.toFixed(2), x, y + height - textHeight);
@@ -181,7 +178,6 @@ class Record extends Component {
       navigator.mediaDevices.getUserMedia ||
       navigator.mediaDevices.webkitGetUserMedia
     ) {
-      // define a Promise that'll be used to load the webcam and read its frames
       const webcamPromise = navigator.mediaDevices
         .getUserMedia({
           video: true,
@@ -189,8 +185,6 @@ class Record extends Component {
         })
         .then(
           (stream) => {
-            // pass the current frame to the window.stream
-
             const mimeType = "audio/webm";
             let chunks = [];
             const recorder = new MediaRecorder(stream, { type: mimeType });
@@ -262,12 +256,6 @@ class Record extends Component {
     }
   };
 
-  // let j = document.createElement("a");
-  // j.id = "download";
-  // j.download = "webcam" + Date.now() + ".mp4";
-  // j.href = blobUrl;
-  // j.click();
-
   createJSON = () => {
     var selection = {
       studentName: this.state.name,
@@ -301,26 +289,8 @@ class Record extends Component {
 
   renderRecording = (blob, list) => {
     const blobUrl = URL.createObjectURL(blob);
-    // const li = document.createElement("li");
-    // const audio = document.createElement("audio");
-    // const anchor = document.createElement("a");
-    // anchor.setAttribute("href", blobUrl);
+
     const now = new Date();
-    // anchor.setAttribute(
-    //   "download",
-    //   `recording-${now.getFullYear()}-${(now.getMonth() + 1)
-    //     .toString()
-    //     .padStart(2, "0")}-${now
-    //     .getDay()
-    //     .toString()
-    //     .padStart(2, "0")}--${now
-    //     .getHours()
-    //     .toString()
-    //     .padStart(2, "0")}-${now
-    //     .getMinutes()
-    //     .toString()
-    //     .padStart(2, "0")}-${now.getSeconds().toString().padStart(2, "0")}.webm`
-    // );
 
     let j = document.createElement("a");
     j.id = "download";
