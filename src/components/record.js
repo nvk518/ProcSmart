@@ -43,7 +43,8 @@ class Record extends Component {
       remoteDetected: 0,
       noPerson: 0,
       phoneDetected: 0,
-      loadingMsg: "Model is loading, please wait.",
+      loadingMsg:
+        "Model is loading, please wait. If loading takes too long, try another browser.",
       recordButton: true,
       sessionID: "",
       name: "",
@@ -395,6 +396,7 @@ class Record extends Component {
                 }}
               />
             </div>
+            <br />
             <Button type="submit" variant="contained" color="primary">
               Save
             </Button>

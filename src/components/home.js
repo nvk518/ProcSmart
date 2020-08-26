@@ -16,6 +16,7 @@ class Home extends Component {
           object classfication technology ideal for simulating and enforcing a
           test taking environment.
         </h3>
+        <h4>(Recording only supported on desktop browsers at this time.)</h4>
         <h2>Features</h2>
         <p>
           - Record webcam video securely and reliably. Because ProcSmart is
@@ -45,12 +46,15 @@ class Home extends Component {
         <br />
         <h2>Students</h2>
         <p>
-          1. Go to <a href="/record">Record</a> <br />
-          2. Enter your name and class Session ID provided by your educator{" "}
+          1. Go to <a href="/record">Record</a>. Allow permission for ProcSmart
+          to use your computer webcam.
           <br />
-          3. Save and record webcam <br />
+          2. Enter your name and class Session ID provided by your educator.
+          <br />
+          3. Save and record webcam. Ensure your face is visible during the
+          recording. <br />
           4. Stop when examination is complete. The recording and ProcSmart
-          analysis will be downloaded. <br />
+          analysis will be downloaded locally. <br />
           5. Share downloaded files with educator. <br />
         </p>
         <br />
